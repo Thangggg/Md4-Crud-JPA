@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<a href="/create">Create</a>
+<table border="1" text align="center">
+    <tr>
+        <th>STT</th>
+        <th>Name</th>
+        <th>Img</th>
+        <th>Age</th>
+        <th>Class</th>
+        <th colspan="2">Action</th>
+    </tr>
+    <tr th:each="s,loop : ${students}">
+        <td th:text="${loop.count}"></td>
+        <td th:text="${s.name}"></td>
+        <td><img th:src="${s.img}" width="300" height="400"></td>
+        <td th:text="${s.age}"></td>
+        <td th:text="${s.classRoom.name}"></td>
+        <td><a th:href="@{/edit(id = ${s.id})}">Edit</a></td>
+        <td><a th:href="@{/delete(id = ${s.id})}">Delete</a></td>
+    </tr>
+</table>
+</body>
+</html>

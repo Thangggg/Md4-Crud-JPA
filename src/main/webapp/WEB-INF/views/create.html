@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form th:object="${student}" method="post" enctype="multipart/form-data">
+    <table align="center" border="1">
+        <tr>
+            <th>Name</th>
+            <th>Img</th>
+            <th>Age</th>
+            <th>Class</th>
+        </tr>
+        <tr>
+            <td><input th:field="*{name}"></td>
+            <td><input type="file" name="upImg"></td>
+            <td><input th:field="*{age}"></td>
+            <td>
+                <select name="idClassRoom">
+                    <option th:each="c: ${classList}" th:text="${c.name}" th:value="${c.id}"></option>
+                </select>
+            </td>
+        </tr>
+
+    </table>
+    <button type="submit">Create</button>
+</form>
+</body>
+</html>
